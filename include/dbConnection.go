@@ -3,6 +3,7 @@ package include
 import (
 	"fmt"
 
+	"github.com/VeeramaniRajkumar32/webApi/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -12,7 +13,7 @@ var DB *gorm.DB
 const (
 	USER     = "root"
 	PASSWORD = ""
-	DATABASE = "blog"
+	DATABASE = "blogpagego"
 )
 
 func Conn() {
@@ -30,5 +31,6 @@ func Conn() {
 
 	fmt.Println("Database %s connected successfully \n", DATABASE)
 
-	defer DB.Close()
+	// defer DB.Close()
+	DB.AutoMigrate(&models.Category{})
 }
